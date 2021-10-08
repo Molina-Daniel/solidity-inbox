@@ -5,6 +5,9 @@ contract Inbox {
     // which returns the variable value
     string public message;
     
+    // This is a constructor function since it matches exactly the contract name
+    // constructor functions are called whenever we first deploy or create an instance of a contract
+    // however, this way of set constructor functions is deprecated and now we should create a contructor() intead
     function Inbox(string initialMessage) public {
         message = initialMessage;
     }

@@ -25,10 +25,11 @@ beforeEach(async () => {
 });
 
 describe('Inbox', () => {
-   it('deploys a contract', () => {
-      console.log(inbox);
-   })
-})
+   it('deploys a contract successfully', () => {
+      // checks that exists a deploy address
+      assert.ok(inbox.options.address);
+   });
+});
 
 
 
