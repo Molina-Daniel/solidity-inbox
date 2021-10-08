@@ -18,11 +18,4 @@ contract Inbox {
     // function getMessage() public view returns(string) {
     //     return message;
     // }
-    
-    function doMath(int a, int b) {
-        a + b;
-        b - a;
-        a * b;
-        a == 0;
-    }
 }
