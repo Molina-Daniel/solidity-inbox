@@ -36,6 +36,14 @@ describe('Inbox', () => {
       const message = await inbox.methods.message().call();
       assert.equal(message, initialString);
    });
+
+   it('can change the message', async () => {
+      await inbox.methods.setMessage('Bye World!').send({from: accounts[0],});
+      // when we send a transaction we receive back a transaction hash, so we usually don't assign the result to a variable. If it fails we'll just get an error and make the test fail
+      
+      const message = await inbox.methods.message().call();
+      assert.equal(message, 'Bye World!');
+   });
 });
 
 
