@@ -6,6 +6,7 @@ const { interface, bytecode } = require('../compile');
 
 let accounts;
 let inbox;
+const initialString = 'Hello World!'
 
 beforeEach(async () => {
    // Get a list of all accounts
@@ -16,7 +17,7 @@ beforeEach(async () => {
    inbox = await new web3.eth.Contract(JSON.parse(interface)) // Tells web3 that there's a Ethereum contract and the interface to interact with
       .deploy({ // Creates a transaction object. Tells web3 that we want to deploy a new copy of this contract. And we pass the contract data/code (bytecode) and the arguments for the constructor that we need to initialitate the contract (initialMessage in this case)
          data: bytecode,
-         arguments: ['Hello World'] // If we'd have a second parameter in the constructor function, we'd pass it as second argument inside this array
+         arguments: [initialString] // If we'd have a second parameter in the constructor function, we'd pass it as second argument inside this array
       })
       .send({ // Tells web3 to comunicate with the network and to send out this transaction to create the contract 
          from: accounts[0],
@@ -28,6 +29,12 @@ describe('Inbox', () => {
    it('deploys a contract successfully', () => {
       // checks that exists a deploy address
       assert.ok(inbox.options.address);
+   });
+
+   it('has a default message', async () => {
+      // call a method of our contract that checks the message with the initial message
+      const message = await inbox.methods.message().call();
+      assert.equal(message, initialString);
    });
 });
 
