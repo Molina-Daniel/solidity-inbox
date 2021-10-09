@@ -33,12 +33,12 @@ describe('Inbox', () => {
 
    it('has a default message', async () => {
       // call a method of our contract that checks the message with the initial message
-      const message = await inbox.methods.message().call();
+      const message = await inbox.methods.message().call(); // .call just calls a function, it doesn't change data and it's intant
       assert.equal(message, initialString);
    });
 
    it('can change the message', async () => {
-      await inbox.methods.setMessage('Bye World!').send({from: accounts[0],});
+      await inbox.methods.setMessage('Bye World!').send({from: accounts[0],}); // .send changes the data and it's not an instant operation
       // when we send a transaction we receive back a transaction hash, so we usually don't assign the result to a variable. If it fails we'll just get an error and make the test fail
       
       const message = await inbox.methods.message().call();
