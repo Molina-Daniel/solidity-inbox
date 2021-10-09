@@ -6,6 +6,7 @@ const { interface, bytecode } = require('./compile');
 const provider = new HDWalletProvider(
    'YOUR_12_MNEMONIC_ACCOUNT_WORDS', // this unlocks your public and private key in the network
    'YOUR_INFURA_RINKEBY_API_LINK' // connects to a Rinkeby network node through Infura API
+   // I didn't upload mine for security reasons
 );
 const web3 = new Web3(provider);
 
@@ -23,5 +24,6 @@ const deploy = async () => {
 };
 
 deploy();
-// Contract deployed on 0x77C45ADB236098efB0D4D318F518B2C86E827938
+// Can check the Contract deployment on 0x77C45ADB236098efB0D4D318F518B2C86E827938
+// https://rinkeby.etherscan.io/address/0x77C45ADB236098efB0D4D318F518B2C86E827938
 // from: 0xdB6DA777a8245324254a6486784401913AfC3363
