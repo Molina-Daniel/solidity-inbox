@@ -4,11 +4,8 @@ contract Inbox {
     // When we create a storage public variable, solidity automatically creates a function with the same name
     // which returns the variable value
     string public message;
-    
-    // This is a constructor function since it matches exactly the contract name
-    // constructor functions are called whenever we first deploy or create an instance of a contract
-    // however, this way of set constructor functions is deprecated and now we should create a contructor() intead
-    function Inbox(string initialMessage) public {
+
+    constructor(string memory initialMessage) {
         message = initialMessage;
     }
     
